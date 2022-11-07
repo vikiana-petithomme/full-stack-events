@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+  <title>THE GRID</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frijole&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>THE GRID</h1>
+   <!-- <h2>EVENTS NEAR YOU</h2>-->
+  </header>
+  <div class="main">
+    <!-- SIDE BAR WITH CONTROLS & FILTERS -->
+  <div class="controllers">
+    <!-- Add New Event Button-->
+    <a class="button addNew"><span class="material-symbols-outlined">
+      </span>ADD AN EVENT</a>
+    <!-- Make pictures bigger-->
+    <section class="filters">
+    <!-- Filters include: State/Location, Time, Date, Event Type-->
+    </section>
+  </div>
+  <!-- Add an Event-->
+  <div class="content">
+    <div class="createEvent hide">
+      <form action="/events" method="POST">
+        <span> ADD A NEW EVENT</span>
+        <input type="text" id="eventName" name="eventName" placeholder="Event Name" required>
+        <input type="text" id="eventHost" name="eventHost" placeholder="Event Host" required>
+        <input type="text" id="eventLocation" name="eventLocation" placeholder="Event Location" required>
+        <input type="date" id="eventDate" name="eventDate" placeholder="Event Date" required>
+        <input type="time" id="eventStartTime" name="eventStartTime" required>
+        <input type="time" id="eventEndTime" name="eventEndTime" required>
+        <input type="url" name="eventFlier"   id="flierUpload" required>
+        <textarea id="description" name="description" required></textarea>
+        <input type="submit" name="submit" id="submit">
+      </form>
+    </div>
+    <!-- GALLERY OF EVENT FLIERS-->
+    <div class="events">
+      <% for (let i=0; i < events.length; i++) { %>
+      <section class="event">
+        <section class="front">
+          <img id="eventFlier" src="<%=events[i].eventFlier%>">
+        </section>
+        <section class="back hide">
+          <h3><%=events[i]?.eventName?.toUpperCase?.()%></h3>
+          <h4>Event Host: <%=events[i].eventHost%></h4>
+          <section class="timing">
+            <span id="eDate"><%=events[i].eventDate%></span>
+            <span id="eTime"><%=events[i].eventStartTime%> - <%=events[i].eventEndTime%></span>
+          </section>
+          <span><%=events[i].eventLocation%></span>
+          <span><%=events[i].eventDescription%></span>
+        <span class="hidden"><%=events[i]._id%></span>
+        </section>
+        <button class="editBtn">Edit Event Name</button>
+      </section>
+      <% } %> 
+    </div>
+  </div>
+  
+  </div>
+  
+    <!-- WHEN CLICKED FLIER FLIPS AND SHOWS ALL OF THE INFOMATION-->
+
+  <!-- <h1>21 Savage</h1>
+  <h2>Why you trappin so hard?</h2> --> 
+
+  <script src="main.js"></script>
+
+</body>
+</html>
