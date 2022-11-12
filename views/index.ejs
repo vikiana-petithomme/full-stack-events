@@ -26,9 +26,6 @@
     <a class="button addNew"><span class="material-symbols-outlined">
       </span>ADD AN EVENT</a>
     <!-- Make pictures bigger-->
-    <section class="filters">
-    <!-- Filters include: State/Location, Time, Date, Event Type-->
-    </section>
   </div>
   <!-- Add an Event-->
   <div class="content">
@@ -50,12 +47,14 @@
     <div class="events">
       <% for (let i=0; i < events.length; i++) { %>
       <section class="event">
-        <section class="front">
+        <section id="<%=events[i]._id%>" class="front">
           <img id="eventFlier" src="<%=events[i].eventFlier%>">
         </section>
         <section class="back hide">
           <h3><%=events[i]?.eventName?.toUpperCase?.()%></h3>
-          <h4>Event Host: <%=events[i].eventHost%></h4>
+          <h4> Event Host: 
+            <span><%=events[i].eventHost%></span>
+          </h4>
           <section class="timing">
             <span id="eDate"><%=events[i].eventDate%></span>
             <span id="eTime"><%=events[i].eventStartTime%> - <%=events[i].eventEndTime%></span>
